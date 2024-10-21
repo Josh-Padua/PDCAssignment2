@@ -4,8 +4,6 @@
  */
 package Assignment2;
 
-import TestingChanges.*;
-import Assignment2.*;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.sql.*;

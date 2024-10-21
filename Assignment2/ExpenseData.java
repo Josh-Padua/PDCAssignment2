@@ -5,8 +5,6 @@
 package Assignment2;
 
 // Importing libraries
-import TestingChanges.*;
-import Assignment2.*;
 import java.util.ArrayList;
 import java.sql.*;
 

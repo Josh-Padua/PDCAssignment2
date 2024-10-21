@@ -4,8 +4,6 @@
  */
 package Assignment2;
 
-import TestingChanges.*;
-import Assignment2.*;
 import java.sql.*;
 
 /**
@@ -33,9 +31,43 @@ public class DBManager {
     {
         try {
             conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            Statement statement = conn.createStatement();
+            String userTable = "users";
+            String expenseTable = "expenses";
+            
+            if (!checkExistingTable(userTable)) {
+                statement.executeUpdate("CREATE TABLE " + userTable + " (username VARCHAR(50) PRIMARY KEY NOT NULL, login_count INT)");
+            }
+            if (!checkExistingTable(expenseTable)) {
+                statement.executeUpdate("CREATE TABLE " + expenseTable + " (ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), username VARCHAR(255) NOT NULL, category VARCHAR(255) NOT NULL, description VARCHAR(500), amount DOUBLE NOT NULL)");
+            }
+            statement.close();
         } catch (SQLException ex) {
             System.err.println("SQLException: " + ex.getMessage());
         }
+    }
+    
+    private boolean checkExistingTable(String tableToCheck) {
+        boolean flag = false;
+        try {
+            System.out.println("Checking tables");
+            String[] types = {"TABLE"};
+            DatabaseMetaData dbmd = conn.getMetaData();
+            ResultSet rsDBMeta = dbmd.getTables(null, null, null, null);
+            while (rsDBMeta.next()) {
+                String tableName = rsDBMeta.getString("TABLE_NAME");
+                if (tableName.compareToIgnoreCase(tableToCheck) == 0) {
+                    System.out.println(tableName + " exists.");
+                    flag = true;
+                }
+            }
+            if (rsDBMeta != null) {
+                rsDBMeta.close();
+            }
+        } catch (SQLException ex) {
+            
+        }
+        return flag;
     }
     
     public void closeConnections()

@@ -4,8 +4,6 @@
  */
 package Assignment2;
 
-import TestingChanges.*;
-
 /**
  *
  * @author Josh Ivan Padua
