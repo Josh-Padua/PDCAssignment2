@@ -4,6 +4,8 @@
  */
 package Assignment2;
 
+import TestingChanges.*;
+
 /**
  *
  * @author Josh Ivan Padua
@@ -34,6 +36,4 @@ public class User {
     public void setUser(String user) {
         this.name = user;
     }
-    
-    
 }

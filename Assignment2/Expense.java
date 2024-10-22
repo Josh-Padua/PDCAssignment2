@@ -4,6 +4,8 @@
  */
 package Assignment2;
 
+import TestingChanges.*;
+
 /**
  *
  * @author Josh Ivan Padua
@@ -66,6 +68,4 @@ public class Expense {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-    
-    
 }
