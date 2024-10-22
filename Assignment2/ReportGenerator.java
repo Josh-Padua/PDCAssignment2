@@ -4,7 +4,6 @@
  */
 package Assignment2;
 
-import TestingChanges.*;
 import java.util.ArrayList;
 
 /**
@@ -17,12 +16,15 @@ public class ReportGenerator {
         this.eM = eM;
     }
     
-    public void generateReport(User user) {
-        System.out.println("Expense Report \n");
-        System.out.print("Total Number of Expenses: " + calcExpenseCount(user) + "\n");
-        System.out.print("Total Cost of Expenses: " + calcTotalExpenseAmount(user) + "\n");
-        System.out.print("Highest Expense Cost: " + highestExpense(user) + "\n");
-        System.out.print("Lowest Expense Cost: " + lowestExpense(user) + "\n");
+    public String generateReport(User user) {
+        StringBuilder report = new StringBuilder();
+        report.append("Expense Report: \n\n");
+        report.append("Total Number of Expenses: ").append(calcExpenseCount(user)).append("\n");
+        report.append("Total Cost of Expenses: ").append(calcTotalExpenseAmount(user)).append("\n");
+        report.append("Highest Expense Cost: ").append(highestExpense(user)).append("\n");
+        report.append("Lowest Expense Cost: ").append(lowestExpense(user)).append("\n");
+        
+        return report.toString();
     }
     
     private double calcTotalExpenseAmount(User user) {

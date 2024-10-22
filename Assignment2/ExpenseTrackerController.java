@@ -4,7 +4,6 @@
  */
 package Assignment2;
 
-import TestingChanges.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -57,6 +56,8 @@ public class ExpenseTrackerController {
                     JOptionPane.showMessageDialog(panel, user.getUser() + " not found. Adding user!");
                 }
                 
+                panel.setSize(200, 200);
+                panel.setLocationRelativeTo(null);
                 panel.menuPanel();
             }
         });
@@ -65,6 +66,8 @@ public class ExpenseTrackerController {
         this.panel.addExpense.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panel.setSize(500, 200);
+                panel.setLocationRelativeTo(null);
                 panel.addExpensePanel();
             }
         });
@@ -74,6 +77,8 @@ public class ExpenseTrackerController {
             public void actionPerformed(ActionEvent e) {
                 ArrayList<Expense> expenses = eM.getExpenses(user);
                 panel.updateRemoveExpenseList(expenses);
+                panel.setSize(500, 200);
+                panel.setLocationRelativeTo(null);
                 panel.removeExpensePanel();
             }
         });
@@ -83,6 +88,8 @@ public class ExpenseTrackerController {
             public void actionPerformed(ActionEvent e) {
                 ArrayList<Expense> expenses = eM.getExpenses(user);
                 panel.updateViewExpenseList(expenses);
+                panel.setSize(500, 200);
+                panel.setLocationRelativeTo(null);
                 panel.viewExpensePanel();
             }
         });
@@ -90,7 +97,11 @@ public class ExpenseTrackerController {
         this.panel.expenseReport.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panel.expenseReportPanel();
+                ReportGenerator rG = new ReportGenerator(eM);
+                String report = rG.generateReport(user);
+                panel.setSize(500, 200);
+                panel.setLocationRelativeTo(null);
+                panel.expenseReportPanel(report);
             }
         });
         
@@ -158,6 +169,8 @@ public class ExpenseTrackerController {
         this.panel.menuAddExpense.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panel.setSize(200, 200);
+                panel.setLocationRelativeTo(null);
                 panel.menuPanel();
             }
         });
@@ -172,6 +185,8 @@ public class ExpenseTrackerController {
         this.panel.menuRemoveExpense.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panel.setSize(200, 200);
+                panel.setLocationRelativeTo(null);
                 panel.menuPanel();
             }
         });
@@ -186,6 +201,8 @@ public class ExpenseTrackerController {
         this.panel.menuViewExpense.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panel.setSize(200, 200);
+                panel.setLocationRelativeTo(null);
                 panel.menuPanel();
             }
         });
@@ -200,6 +217,8 @@ public class ExpenseTrackerController {
         this.panel.menuExpenseReport.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panel.setSize(200, 200);
+                panel.setLocationRelativeTo(null);
                 panel.menuPanel();
             }
         });

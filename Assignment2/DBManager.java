@@ -4,7 +4,6 @@
  */
 package Assignment2;
 
-import TestingChanges.*;
 import java.sql.*;
 
 /**
@@ -55,14 +54,12 @@ public class DBManager {
     private boolean checkExistingTable(String tableToCheck) {
         boolean flag = false;
         try {
-            System.out.println("Checking tables");
             String[] types = {"TABLE"};
             DatabaseMetaData dbmd = conn.getMetaData();
             ResultSet rsDBMeta = dbmd.getTables(null, null, null, null);
             while (rsDBMeta.next()) {
                 String tableName = rsDBMeta.getString("TABLE_NAME");
                 if (tableName.compareToIgnoreCase(tableToCheck) == 0) {
-                    System.out.println(tableName + " exists.");
                     flag = true;
                 }
             }

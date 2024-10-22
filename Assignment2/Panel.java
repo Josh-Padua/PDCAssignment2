@@ -4,7 +4,6 @@
  */
 package Assignment2;
 
-import TestingChanges.*;
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -53,6 +52,7 @@ public class Panel extends JFrame {
     private JTextArea removeExpenseList = new JTextArea(15, 40);
     private JLabel expenseToRemove = new JLabel("Expense To Remove: ");
     public JTextField removeInput = new JTextField(3);
+    
     public JPanel removeExpenseButtons = new JPanel();
     public JButton removeButton = new JButton("Remove");
     public JButton menuRemoveExpense = new JButton("Menu");
@@ -66,13 +66,16 @@ public class Panel extends JFrame {
     public JButton exitView = new JButton("Exit");
     
     // expenseReportPanel
+    private JTextArea reportText = new JTextArea(15, 40);
+    
+    public JPanel expenseReportButtons = new JPanel();
     public JButton menuExpenseReport = new JButton("Menu");
     public JButton exitReport = new JButton("Exit");
     
     
     public Panel() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(500, 150);
+        this.setSize(300, 100);
         this.setLocationRelativeTo(null); // align to center of screen
         
         // userPanel
@@ -118,8 +121,14 @@ public class Panel extends JFrame {
         viewExpensePanel.add(viewExpenseButtons, BorderLayout.SOUTH);
         
         // expenseReportPanel
-        expenseReportPanel.add(menuExpenseReport);
-        expenseReportPanel.add(exitReport);
+        reportText.setEditable(false);
+        reportText.setLineWrap(true);
+        reportText.setWrapStyleWord(true);
+        expenseReportPanel.setLayout(new BorderLayout());
+        expenseReportPanel.add(new JScrollPane(reportText), BorderLayout.CENTER);
+        expenseReportButtons.add(menuExpenseReport);
+        expenseReportButtons.add(exitReport);
+        expenseReportPanel.add(expenseReportButtons, BorderLayout.SOUTH);
         
         
         
@@ -181,8 +190,9 @@ public class Panel extends JFrame {
         }
     }
 
-    public void expenseReportPanel() {
+    public void expenseReportPanel(String report) {
         this.getContentPane().removeAll();
+        reportText.setText(report);
         this.add(expenseReportPanel);
         this.revalidate();
         this.repaint();
