@@ -17,7 +17,7 @@ Database setup with notes taken from PDC Task 8_02 & Task 09_3
 public class DBManager {
     private static final String USER_NAME = "expense";
     private static final String PASSWORD = "expense";
-    private static final String URL = "jdbc:derby://localhost:1527/expense";
+    private static final String URL = "jdbc:derby:ExpenseTracker_Edb; create=true";
     
     Connection conn;
     
